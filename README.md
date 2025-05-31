@@ -48,7 +48,6 @@ Criado como parte de um projeto acadêmico, o sistema representa uma proposta vi
 ├── home.html                  # Tela de entrada
 ├── orientador.html            # Painel de orientadores
 ├── padrinho.html              # Painel de padrinhos
-├── padrinhoCadastro.html      # Cadastro de padrinhos
 ├── anonimo.html               # Doação anônima
 ├── Imagens/                   # Logotipo e QR Code
 └── README.md                  # Este arquivo
