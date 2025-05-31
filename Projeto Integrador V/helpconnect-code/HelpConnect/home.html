@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - HelpConnect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --azul-principal: #005CA9;
+            --laranja: #F58220;
+            --verde: #8DC63F;
+            --cinza: #6D6E71;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--azul-principal);
+            min-height: 100vh;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            padding: 1.5rem; 
+        }
+
+        .logo {
+            max-width: 280px;
+            width: 100%;
+            margin-bottom: 1.5rem; 
+        }
+
+        .login-title {
+            color: var(--azul-principal);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem; 
+        }
+
+        .btn-option {
+            font-family: 'Montserrat', sans-serif;
+            color: white !important;
+            padding: 1rem;
+            border: none;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
+            position: relative;
+        }
+
+        .btn-option:focus {
+            outline: 3px solid var(--verde);
+            outline-offset: 2px;
+        }
+
+        .btn-orientador { background: var(--laranja) !important; }
+        .btn-orientador:hover { background: #d96d1a !important; }
+        .btn-padrinho { background: var(--azul-principal) !important; }
+        .btn-padrinho:hover { background: #004b87 !important; }
+        
+        .link-anonimo { 
+            color: var(--azul-principal) !important; 
+            font-weight: 600;
+            text-decoration: none !important;
+            border-bottom: 2px solid transparent;
+        }
+
+        .link-anonimo:hover, 
+        .link-anonimo:focus {
+            text-decoration: none !important;
+            border-bottom-color: var(--azul-principal);
+        }
+
+        /* Estilos do Modal */
+        .terms-modal .modal-content {
+            border-radius: 15px;
+        }
+
+        .terms-modal .modal-header {
+            border-bottom: 2px solid var(--azul-principal);
+        }
+
+        .terms-content {
+            max-height: 60vh;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .logo { max-width: 320px; }
+            .login-container { padding: 2rem; } 
+        }
+    </style>
+</head>
+<body class="d-flex align-items-center">
+    <div class="container">
+        <div class="login-container mx-auto">
+            <div class="text-center">
+                <img src="Imagens/logo.png" alt="Logo HelpConnect - Conectando doadores a crianças necessitadas" class="logo img-fluid">
+            </div>
+
+            <h1 class="login-title text-center">
+                Entre e faça a diferença
+            </h1>
+
+            <div class="d-grid gap-2">
+                <button 
+                    class="btn btn-option btn-orientador d-flex align-items-center"
+                    onclick="window.location.href='orientador.html'"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Acessar como Orientador">
+                    <i class="fas fa-chalkboard-teacher fs-4 me-3" aria-hidden="true"></i>
+                    Orientador
+                </button>
+
+                <button 
+                    class="btn btn-option btn-padrinho d-flex align-items-center" 
+                    onclick="window.location.href='padrinho.html'"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Acessar como Padrinho">
+                    <i class="fas fa-hands-helping fs-4 me-3" aria-hidden="true"></i>
+                    Padrinho
+                </button>
+            </div>
+
+            <div class="text-center mt-3">
+                <a 
+                    href="#termsModal" 
+                    class="link-anonimo" 
+                    role="button"
+                    tabindex="0"
+                    data-bs-toggle="modal"
+                    data-bs-target="#termsModal"
+                    aria-label="Acessar como Padrinho Anônimo">
+                    Entrar como padrinho Anônimo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Termos para Anônimo -->
+    <div class="modal fade terms-modal" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="termsModalLabel">Termos de Uso - Doação Anônima</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="terms-content">
+                        <h3>Política de Privacidade</h3>
+                        <p>Sua privacidade é importante para nós. Ao realizar uma doação anônima:</p>
+                        <ul>
+                            <li>Não armazenamos nenhum dado pessoal</li>
+                            <li>As transações são processadas de forma segura</li>
+                            <li>Você não receberá comunicações futuras</li>
+                        </ul>
+                        
+                        <h3>Termos de Serviço</h3>
+                        <p>Ao prosseguir, você concorda que:</p>
+                        <ul>
+                            <li>A doação é voluntária e irrevogável</li>
+                            <li>Os recursos serão usados conforme necessidade da instituição</li>
+                            <li>Não haverá identificação pessoal nas divulgações</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discordo</button>
+                    <a href="anonimo.html" class="btn btn-primary">Concordo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Controle de foco para acessibilidade
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.btn-option, .link-anonimo');
+            buttons.forEach(button => {
+                button.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.target.click();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

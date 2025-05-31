@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orientador - HelpConnect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --azul-principal: #005CA9;
+            --laranja: #F58220;
+            --cinza: #6D6E71;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--azul-principal);
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .main-container {
+            max-width: 1200px;
+        }
+
+        .card-style {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            height: 100%;
+        }
+
+        .titulo-principal {
+            color: var(--azul-principal);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .logo-principal {
+            max-width: 280px;
+            width: 100%;
+            margin: 1rem auto;
+        }
+
+        .lista-beneficios {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .lista-beneficios li {
+            margin-bottom: 1rem;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .lista-beneficios li::before {
+            content: "•";
+            color: var(--laranja);
+            position: absolute;
+            left: -1rem;
+            font-size: 1.2rem;
+        }
+
+        .btn-maps {
+            background: var(--laranja);
+            color: white !important;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .btn-maps:hover {
+            background: #d96d1a;
+        }
+
+        .btn-login {
+            background: var(--azul-principal);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 8px;
+            width: 100%;
+            margin-bottom: 1rem;
+            border: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-login:hover {
+            background: #004a8a;
+        }
+
+        .btn-cadastro {
+            background: var(--laranja);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 8px;
+            width: 100%;
+            border: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-cadastro:hover {
+            background: #d96d1a;
+        }
+
+        .btn-voltar {
+            background: #6c757d;
+            color: white;
+            padding: 0.8rem;
+            border-radius: 8px;
+            width: 100%;
+            border: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn-voltar:hover {
+            background: #5a6268;
+        }
+
+        .terms-modal .modal-content {
+            border-radius: 15px;
+        }
+
+        .terms-modal .modal-header {
+            border-bottom: 2px solid var(--azul-principal);
+        }
+
+        .terms-modal .modal-title {
+            color: var(--azul-principal);
+            font-weight: 700;
+        }
+
+        .terms-content {
+            max-height: 60vh;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .titulo-principal {
+                font-size: 1.5rem;
+            }
+            .logo-principal {
+                max-width: 220px;
+            }
+        }
+    </style>
+</head>
+<body class="d-flex align-items-center">
+    <div class="container main-container">
+        <div class="row g-4">
+
+            <!-- Coluna Esquerda -->
+            <div class="col-lg-5">
+                <div class="card-style">
+                    <h3 class="titulo-principal">Orientações para Orientadores</h3>
+                    <ul class="lista-beneficios">
+                        <li>Mantenha suas credenciais de acesso em sigilo absoluto</li>
+                        <li>Não compartilhe sua senha com nenhum outro colaborador</li>
+                        <li>Certifique-se de fazer logout ao final de cada sessão</li>
+                        <li>Relate imediatamente qualquer atividade suspeita em sua conta</li>
+                        <li>Mantenha os dados das crianças e famílias em total confidencialidade</li>
+                        <li>Atualize regularmente as informações das crianças sob sua orientação</li>
+                        <li>Siga rigorosamente os protocolos de segurança da instituição</li>
+                        <li>Em caso de dúvidas, consulte sempre a coordenação</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Coluna Central -->
+            <div class="col-lg-3">
+                <div class="card-style text-center">
+                    <h3 class="titulo-principal">Acesso do Orientador</h3>
+                    <img src="Imagens/logo.png" alt="Logo HelpConnect" class="logo-principal img-fluid">
+                    
+                    <div class="mt-4">
+                        <button onclick="window.location.href='orientadorDashboard.html'" class="btn-login">
+                            <i class="fas fa-sign-in-alt me-2"></i> Login
+                        </button>
+                        <button type="button" class="btn-cadastro" data-bs-toggle="modal" data-bs-target="#termsModal">
+                            <i class="fas fa-user-shield me-2"></i> Solicitar Acesso
+                        </button>
+                        <button onclick="window.location.href='home.html'" class="btn-voltar">
+                            <i class="fas fa-arrow-left me-2"></i> Voltar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna Direita -->
+            <div class="col-lg-4">
+                <div class="card-style">
+                    <h3 class="titulo-principal">Recursos para Orientadores</h3>
+                    <p class="mb-4">Aqui você encontrará ferramentas e informações essenciais para seu trabalho de orientação.</p>
+                    
+                    <div class="text-center">
+                        <a href="manual-orientador.pdf" target="_blank" class="btn-maps">
+                            <i class="fas fa-file-pdf me-2"></i>
+                            Manual do Orientador
+                        </a>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-top">
+                        <h4 class="h5 mb-3">Suporte e Contato:</h4>
+                        <ul class="lista-beneficios small">
+                            <li>Suporte técnico: suporte@helpconnect.org</li>
+                            <li>Coordenação: coordenacao@helpconnect.org</li>
+                            <li>Plantão: (11) 98765-4321</li>
+                            <li>Horário de atendimento: 8h às 18h</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal de Termos -->
+    <div class="modal fade terms-modal" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="termsModalLabel">Termos de Uso e Política de Segurança</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="terms-content">
+                        <h4>1. Responsabilidades do Orientador</h4>
+                        <p>Como orientador, você terá acesso a informações confidenciais e se compromete a mantê-las em sigilo absoluto.</p>
+                        
+                        <h4>2. Política de Segurança</h4>
+                        <p>É proibido compartilhar credenciais de acesso ou deixar sistemas abertos em computadores desatendidos.</p>
+                        
+                        <h4>3. Consentimento</h4>
+                        <p>Ao solicitar acesso, você concorda com todas as políticas de segurança e confidencialidade da instituição.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnConcordar">
+                        <i class="fas fa-check me-2"></i> Concordo e Solicito Acesso
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Redireciona para a página de solicitação de acesso quando concordar com os termos
+        document.getElementById('btnConcordar').addEventListener('click', function() {
+            window.location.href = 'solicitacaoAcesso.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Orientador | HelpConnect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --azul-principal: #005CA9;
+            --laranja: #F58220;
+            --cinza: #6D6E71;
+            --cinza-claro: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--azul-principal);
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .main-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: calc(100% - 40px);
+            margin: 20px auto;
+            padding: 2rem;
+            min-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .menu-superior {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .menu-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-dashboard {
+            background-color: var(--laranja);
+            color: white;
+        }
+
+        .btn-dashboard:hover {
+            background-color: #d96d1a;
+            transform: translateY(-2px);
+        }
+
+        .btn-relatorios {
+            background-color: var(--azul-principal);
+            color: white;
+        }
+
+        .btn-relatorios:hover {
+            background-color: #004b87;
+            transform: translateY(-2px);
+        }
+
+        .btn-add-child {
+            background-color: #d96d1a;
+            color: white;
+        }
+
+        .btn-add-child:hover {
+            background-color: #d96d1a;
+            transform: translateY(-2px);
+        }
+
+        .page-title {
+            color: var(--azul-principal);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .btn-sair {
+            background-color: transparent;
+            border: 1px solid var(--azul-principal);
+            color: var(--azul-principal);
+            padding: 6px 12px;
+            font-weight: 600;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            position: absolute;
+            right: 30px;
+            transition: all 0.3s;
+        }
+
+        .btn-sair:hover {
+            background-color: var(--azul-principal);
+            color: white;
+        }
+
+        .btn-ver {
+            background-color: var(--azul-principal);
+            border: none;
+            padding: 8px 16px;
+            font-weight: 600;
+            width: 100%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .btn-ver:hover {
+            background-color: #004b87;
+            transform: translateY(-2px);
+        }
+
+        .btn-editar {
+            background-color: var(--laranja);
+            border: none;
+            padding: 8px 16px;
+            font-weight: 600;
+            width: 100%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .btn-editar:hover {
+            background-color: #d96d1a;
+            transform: translateY(-2px);
+        }
+
+        .child-card {
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .child-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .child-photo {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .child-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--azul-principal);
+            margin-bottom: 5px;
+        }
+
+        .child-info {
+            color: var(--cinza);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .filtros {
+            background-color: var(--cinza-claro);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .filtros-titulo {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul-principal);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .grupo-filtro {
+            margin-bottom: 15px;
+        }
+
+        .filtro-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+            color: var(--cinza);
+        }
+
+        @media (min-width: 768px) {
+            .main-container {
+                padding: 3rem;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .main-container {
+                width: 100%;
+                margin: 0;
+                padding: 1rem;
+                border-radius: 0;
+            }
+            
+            .menu-superior {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn-sair {
+                position: static;
+                margin-left: auto;
+                margin-top: 10px;
+            }
+            
+            .page-title {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .menu-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container mx-auto">
+        <h1 class="page-title">
+            Dashboard Orientador
+            <button class="btn-sair">
+                <i class="fas fa-sign-out-alt me-1"></i> Sair
+            </button>
+        </h1>
+
+        <div class="menu-superior">
+            <button class="menu-btn btn-dashboard" onclick="window.location.href='orientadorDashboard.html'">
+                <i class="fas fa-home"></i> Dashboard
+            </button>
+            <button class="menu-btn btn-relatorios" onclick="window.location.href='orientadorRelatorio.html'">
+                <i class="fas fa-chart-bar"></i> Relatórios
+            </button>
+            <button class="menu-btn btn-add-child" onclick="window.location.href='orientadorAdicionar.html'">
+                <i class="fas fa-plus"></i> Adicionar Criança
+            </button>
+        </div>
+
+        <div class="filtros">
+            <h5 class="filtros-titulo">
+                <i class="fas fa-filter"></i> Filtros
+            </h5>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 grupo-filtro">
+                    <label class="filtro-label">Status</label>
+                    <select class="form-select">
+                        <option selected>Todos</option>
+                        <option>Ativo</option>
+                        <option>Desativado</option>
+                        <option>Aguardando confirmação</option>
+                        <option>Aguardando apadrinhamento</option>
+                    </select>
+                </div>
+                <div class="col-md-3 col-sm-6 grupo-filtro">
+                    <label class="filtro-label">Apadrinhado</label>
+                    <select class="form-select">
+                        <option selected>Todos</option>
+                        <option>Sim</option>
+                        <option>Não</option>
+                    </select>
+                </div>
+                <div class="col-md-3 col-sm-6 grupo-filtro">
+                    <label class="filtro-label">Idade</label>
+                    <select class="form-select">
+                        <option selected>Todas</option>
+                        <option>3-5 anos</option>
+                        <option>6-8 anos</option>
+                        <option>9-12 anos</option>
+                    </select>
+                </div>
+                <div class="col-md-3 col-sm-6 grupo-filtro">
+                    <label class="filtro-label">Gênero</label>
+                    <select class="form-select">
+                        <option selected>Todos</option>
+                        <option>Masculino</option>
+                        <option>Feminino</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="child-card text-center">
+                        <img src="Imagens/foto2.png" alt="Leonardo" class="child-photo">
+                        <h3 class="child-name">Leonardo</h3>
+                        <div class="child-info">
+                            <p>8 anos | Masculino</p>
+                            <p>Status: Ativo</p>
+                            <p class="mb-3"><strong>Apadrinhado: Sim</strong></p>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-ver" onclick="window.location.href='orientadorVer1.html'">
+                                <i class="fas fa-eye me-2"></i> Ver
+                            </button>
+                            <button class="btn btn-editar" onclick="window.location.href='orientadorEdicao.html'">
+                                <i class="fas fa-edit me-2"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="child-card text-center">
+                        <img src="Imagens/foto1.png" alt="Rita" class="child-photo">
+                        <h3 class="child-name">Rita</h3>
+                        <div class="child-info">
+                            <p>6 anos | Feminino</p>
+                            <p>Status: Ativo</p>
+                            <p class="mb-3"><strong>Apadrinhado: Não</strong></p>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-ver" onclick="window.location.href='orientadorVer2.html'">
+                                <i class="fas fa-eye me-2"></i> Ver
+                            </button>
+                            <button class="btn btn-editar">
+                                <i class="fas fa-edit me-2"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="child-card text-center">
+                        <img src="Imagens/foto2.png" alt="Pedro" class="child-photo">
+                        <h3 class="child-name">Pedro</h3>
+                        <div class="child-info">
+                            <p>9 anos | Masculino</p>
+                            <p>Status: Aguardando confirmação</p>
+                            <p class="mb-3"><strong>Apadrinhado: Não</strong></p>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-ver" onclick="window.location.href='orientadorVer3.html'">
+                                <i class="fas fa-eye me-2"></i> Ver
+                            </button>
+                            <button class="btn btn-editar">
+                                <i class="fas fa-edit me-2"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="child-card text-center">
+                        <img src="Imagens/foto1.png" alt="Ana" class="child-photo">
+                        <h3 class="child-name">Ana</h3>
+                        <div class="child-info">
+                            <p>7 anos | Feminino</p>
+                            <p>Status: Ativo</p>
+                            <p class="mb-3"><strong>Apadrinhado: Sim</strong></p>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-ver">
+                                <i class="fas fa-eye me-2"></i> Ver
+                            </button>
+                            <button class="btn btn-editar">
+                                <i class="fas fa-edit me-2"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="child-card text-center">
+                        <img src="Imagens/foto2.png" alt="Lucas" class="child-photo">
+                        <h3 class="child-name">Lucas</h3>
+                        <div class="child-info">
+                            <p>10 anos | Masculino</p>
+                            <p>Status: Aguardando apadrinhamento</p>
+                            <p class="mb-3"><strong>Apadrinhado: Não</strong></p>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-ver">
+                                <i class="fas fa-eye me-2"></i> Ver
+                            </button>
+                            <button class="btn btn-editar">
+                                <i class="fas fa-edit me-2"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="child-card text-center">
+                        <img src="Imagens/foto1.png" alt="Sophia" class="child-photo">
+                        <h3 class="child-name">Sophia</h3>
+                        <div class="child-info">
+                            <p>5 anos | Feminino</p>
+                            <p>Status: Desativado</p>
+                            <p class="mb-3"><strong>Apadrinhado: Sim</strong></p>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-ver">
+                                <i class="fas fa-eye me-2"></i> Ver
+                            </button>
+                            <button class="btn btn-editar">
+                                <i class="fas fa-edit me-2"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="child-card text-center">
+                        <img src="Imagens/foto2.png" alt="Miguel" class="child-photo">
+                        <h3 class="child-name">Miguel</h3>
+                        <div class="child-info">
+                            <p>11 anos | Masculino</p>
+                            <p>Status: Ativo</p>
+                            <p class="mb-3"><strong>Apadrinhado: Não</strong></p>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-ver">
+                                <i class="fas fa-eye me-2"></i> Ver
+                            </button>
+                            <button class="btn btn-editar">
+                                <i class="fas fa-edit me-2"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="child-card text-center">
+                        <img src="Imagens/foto1.png" alt="Isabella" class="child-photo">
+                        <h3 class="child-name">Isabella</h3>
+                        <div class="child-info">
+                            <p>8 anos | Feminino</p>
+                            <p>Status: Ativo</p>
+                            <p class="mb-3"><strong>Apadrinhado: Sim</strong></p>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-ver">
+                                <i class="fas fa-eye me-2"></i> Ver
+                            </button>
+                            <button class="btn btn-editar">
+                                <i class="fas fa-edit me-2"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="child-card text-center">
+                        <img src="Imagens/foto2.png" alt="Arthur" class="child-photo">
+                        <h3 class="child-name">Arthur</h3>
+                        <div class="child-info">
+                            <p>7 anos | Masculino</p>
+                            <p>Status: Aguardando confirmação</p>
+                            <p class="mb-3"><strong>Apadrinhado: Não</strong></p>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-ver">
+                                <i class="fas fa-eye me-2"></i> Ver
+                            </button>
+                            <button class="btn btn-editar">
+                                <i class="fas fa-edit me-2"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="child-card text-center">
+                        <img src="Imagens/foto1.png" alt="Laura" class="child-photo">
+                        <h3 class="child-name">Laura</h3>
+                        <div class="child-info">
+                            <p>6 anos | Feminino</p>
+                            <p>Status: Ativo</p>
+                            <p class="mb-3"><strong>Apadrinhado: Sim</strong></p>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-ver">
+                                <i class="fas fa-eye me-2"></i> Ver
+                            </button>
+                            <button class="btn btn-editar">
+                                <i class="fas fa-edit me-2"></i> Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnSair = document.querySelector('.btn-sair');
+            
+            btnSair.addEventListener('click', function() {
+                window.location.href = 'orientador.html';
+            });
+        });
+    </script>
+</body>
+</html>

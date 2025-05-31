@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver | HelpConnect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --azul-principal: #005CA9;
+            --laranja: #F58220;
+            --cinza: #6D6E71;
+            --cinza-botao: #6c757d;
+            --cinza-hover: #5a6268;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--azul-principal);
+            min-height: 100vh;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .main-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .page-title {
+            color: var(--azul-principal);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .child-photo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: block;
+            border: 5px solid var(--laranja);
+        }
+
+        .child-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--azul-principal);
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .child-info {
+            color: var(--cinza);
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .child-description {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        /* Novo estilo para o botão Voltar */
+        .btn-voltar {
+            background-color: var(--cinza-botao);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-voltar:hover {
+            background-color: var(--cinza-hover);
+            color: white;
+        }
+
+        @media (max-width: 576px) {
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-voltar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="page-title">
+            Ver
+        </h1>
+
+        <div class="child-details">
+            <img src="Imagens/foto2.png" alt="Leonardo" class="child-photo">
+            <h2 class="child-name">Leonardo</h2>
+            <div class="child-info">
+                <p>8 anos | Masculino</p>
+            </div>
+            
+            <div class="child-description">
+                <p>Léo é um menino muito esperto e cheio de energia. Adora jogar video game com os amigos e sonha em se tornar um grande pro player de Call Of Duty. Na escola, tem facilidade com matemática e está sempre ajudando os colegas. Sua família é muito unida e ele é o caçula de três irmãos.</p>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-voltar" onclick="window.location.href='orientadorDashboard.html'">
+                <i class="fas fa-arrow-left me-2"></i> Voltar
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

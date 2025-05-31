@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doação - Vivenda da Criança</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --azul-principal: #005CA9;
+            --laranja: #F58220;
+            --verde: #8DC63F;
+            --cinza: #6D6E71;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--azul-principal);
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .main-container {
+            max-width: 1200px;
+        }
+
+        .card-style {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            height: 100%;
+        }
+
+        .titulo-principal {
+            color: var(--azul-principal);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .qr-principal {
+            max-width: 280px;
+            width: 100%;
+            margin: 1rem auto;
+        }
+
+        .lista-beneficios {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .lista-beneficios li {
+            margin-bottom: 1rem;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .lista-beneficios li::before {
+            content: "•";
+            color: var(--verde);
+            position: absolute;
+            left: -1rem;
+            font-size: 1.2rem;
+        }
+
+        .btn-maps {
+            background: var(--laranja);
+            color: white !important;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .btn-maps:hover {
+            background: #d96d1a;
+        }
+
+        @media (max-width: 768px) {
+            .titulo-principal {
+                font-size: 1.5rem;
+            }
+            .qr-principal {
+                max-width: 220px;
+            }
+        }
+    </style>
+</head>
+<body class="d-flex align-items-center">
+    <div class="container main-container">
+        <div class="row g-4">
+
+            <div class="col-lg-5">
+                <div class="card-style">
+                    <h3 class="titulo-principal">Seja um Doador </h3>
+                    <ul class="lista-beneficios">
+                        <li>Garantir alimentação diária para mais de 450 crianças e adolescentes</li>
+                        <li>Ampliar nossos atendimentos e atividades educacionais</li>
+                        <li>Manter e melhorar nossa estrutura física</li>
+                        <li>Adquirir materiais pedagógicos e de higiene</li>
+                        <li>Realizar passeios culturais e atividades comunitárias</li>
+                        <li>Desenvolver projetos de geração de renda para famílias</li>
+                    </ul>
+                </div>
+            </div>
+
+           
+            <div class="col-lg-3">
+                <div class="card-style text-center">
+                    <h3 class="titulo-principal">Faça sua doação agora mesmo</h3>
+                    <img src="Imagens/qrcodeteste.png" alt="QR Code PIX" class="qr-principal img-fluid">
+                    <p class="text-muted mt-3">Use seu app bancário para escanear</p>
+                </div>
+            </div>
+
+            
+            <div class="col-lg-4">
+                <div class="card-style">
+                    <h3 class="titulo-principal">Venha nos conhecer</h3>
+                    <p class="mb-4">Sua participação direta faz a diferença! Junte-se a nós como voluntário e faça parte dessa transformação.</p>
+                    
+                    <div class="text-center">
+                        <a href="https://g.co/kgs/zYwKuHA" target="_blank" class="btn-maps">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Ver Localização no Maps
+                        </a>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-top">
+                        <h4 class="h5 mb-3">Informações para Voluntários:</h4>
+                        <ul class="lista-beneficios small">
+                            <li>De segunda a sexta das 8h as 17h</li>
+                            <li>Diversas áreas de atuação</li>
+                            <li>Treinamento fornecido</li>
+                            <li>Experiência transformadora</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+</html>
