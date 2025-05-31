@@ -76,8 +76,7 @@ Este protótipo pode ser navegado localmente abrindo os arquivos HTML em navegad
 
 **Vivenda da Criança**
 📍 São Paulo - SP
-🌐 [vivendadacrianca.com.br](https://www.vivendadacrianca.com.br/)
-📧 [vivendadacrianca@terra.com.br](mailto:vivendadacrianca@terra.com.br)
+🌐 https://www.vivendadacrianca.com.br/
 
 ---
 
